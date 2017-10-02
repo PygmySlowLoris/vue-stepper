@@ -33,7 +33,6 @@
   @include shadow(1);
   min-height: 200px;
   .top {
-    min-height: 9rem;
     display: flex;
     align-items: center;
     position: relative;
@@ -41,7 +40,6 @@
       border-bottom: 1px solid #cccccc;
       height: 2px;
       width: 90%;
-      top: 3rem;
       position: absolute;
       left: 5%;
       @include breakpoint(xs) {
@@ -52,11 +50,10 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      position: absolute;
+      position: relative;
       width: 100%;
-      top: .5rem;
       left: 0;
-      padding: 2% 4%;
+      padding: 1% 4%;
       @include breakpoint(xs) {
         width: 90%;
         justify-content: center;
@@ -68,6 +65,7 @@
         flex-direction: column;
         align-items: center;
         text-align: center;
+        padding: 0rem 1rem;
         &.deactivated {
           @include breakpoint(xs) {
             display: none;
@@ -79,7 +77,7 @@
           }
         }
         .circle {
-          margin-bottom: .5rem;
+          margin: 1.5rem 0;
           i {
             background-color: #3383c8;
             color: #fff;
@@ -88,8 +86,11 @@
           }
         }
         .step-title {
+          position: absolute;
+          top: 90%;
+          width: 8rem;
           h1, h2, h3, h4, h5 {
-            margin: 0 0 .2rem 0;
+            margin: 0;
             color: #333333;
             font-weight: bold;
           }
