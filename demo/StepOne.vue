@@ -3,22 +3,22 @@
         <div class="field">
             <label class="label">Username</label>
             <div class="control">
-                <input :class="['input', ($v.username.$error) ? 'is-danger' : '']" type="text" placeholder="Text input"
-                       v-model="username">
+                <input :class="['input', ($v.form.username.$error) ? 'is-danger' : '']" type="text" placeholder="Text input"
+                       v-model="form.username">
             </div>
-            <p class="help is-success">This username is available</p>
+            <p v-if="$v.form.username.$error" class="help is-danger">This username is invalid</p>
         </div>
         <div class="field">
             <label class="label">Email</label>
             <div class="control">
-                <input class="input" type="text" placeholder="Email input" v-model="demoEmail">
+                <input :class="['input', ($v.form.demoEmail.$error) ? 'is-danger' : '']"  type="text" placeholder="Email input" v-model="form.demoEmail">
             </div>
-            <p class="help is-danger">This email is invalid</p>
+            <p v-if="$v.form.demoEmail.$error" class="help is-danger">This email is invalid</p>
         </div>
         <div class="field">
             <label class="label">Message</label>
             <div class="control">
-                <textarea class="textarea" placeholder="Textarea" v-model="message"></textarea>
+                <textarea :class="['textarea', ($v.form.message.$error) ? 'is-danger' : '']"  placeholder="Textarea" v-model="form.message"></textarea>
             </div>
         </div>
     </div>
@@ -29,24 +29,29 @@
     import {required, email} from 'vuelidate/lib/validators'
 
     export default {
+        props: ['clickedNext'],
         mixins: [validationMixin],
         data() {
             return {
-                username: '',
-                demoEmail: '',
-                message: ''
+                form: {
+                    username: '',
+                    demoEmail: '',
+                    message: ''
+                }
             }
         },
         validations: {
-            username: {
-                required
-            },
-            demoEmail: {
-                required,
-                email
-            },
-            message: {
-                required
+            form: {
+                username: {
+                    required
+                },
+                demoEmail: {
+                    required,
+                    email
+                },
+                message: {
+                    required
+                }
             }
         },
         watch: {
@@ -59,6 +64,11 @@
                     }
                 },
                 deep: true
+            },
+            clickedNext(val) {
+                if(val === true) {
+                    this.$v.form.$touch();
+                }
             }
         },
         mounted() {

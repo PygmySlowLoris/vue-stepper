@@ -24,7 +24,9 @@
                     :leave-active-class="leaveAnimation"
                     mode="out-in"
             >
-                <component :is="steps[currentStep.index].component" @can-continue="proceed"></component>
+                <keep-alive>
+                    <component :is="steps[currentStep.index].component" :clickedNext="nextButton[currentStep.name]" @can-continue="proceed"></component>
+                </keep-alive>
             </transition>
         </div>
         <div :class="['bottom', (currentStep.index > 0) ? '' : 'only-next']">
@@ -68,6 +70,7 @@
             return {
                 currentStep: {},
                 previousStep: {},
+                nextButton: {},
                 canContinue: false,
                 finalStep: false
             }
@@ -106,6 +109,8 @@
 
                     if(index + 1 === this.steps.length) {
                         this.finalStep = true;
+                    } else {
+                        this.finalStep = false;
                     }
 
                     if(!back) {
@@ -123,7 +128,8 @@
                     this.activateStep(currentIndex);
 
                 }
-                this.$emit('clicking-next');
+                this.nextButton[this.currentStep.name] = true;
+                this.$forceUpdate();
             },
             backStep() {
                 this.$emit('clicking-back');
@@ -139,6 +145,9 @@
         created() {
             // Initiate stepper
             this.activateStep(0);
+            this.steps.forEach( (step)=> {
+                this.nextButton[step.name] = false;
+            });
         }
     }
 </script>

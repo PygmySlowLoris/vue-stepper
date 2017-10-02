@@ -42,7 +42,8 @@
             <div class="container">
                 <div class="columns">
                     <div class="column is-8 is-offset-2">
-                        <horizontal-stepper :steps="demoSteps" @completed-step="completeStep" @stepper-finished="alert"></horizontal-stepper>
+                        <horizontal-stepper :steps="demoSteps" @completed-step="completeStep"
+                                            @active-step="isStepActive" @stepper-finished="alert"></horizontal-stepper>
                     </div>
                 </div>
             </div>
@@ -75,7 +76,8 @@
 
     export default {
         name: 'app',
-        components: { HorizontalStepper
+        components: {
+            HorizontalStepper
         },
         data(){
             return {
@@ -107,16 +109,25 @@
                         component: StepOne,
                         completed: false
                     }
-                ]
+                ],
+                activeStep: 0
             }
         },
-        computed: {
-        },
+        computed: {},
         methods: {
             completeStep(payload) {
-                this.demoSteps.forEach( (step)=> {
-                    if(step.name === payload.name) {
-                        step.completed = !step.completed
+                this.demoSteps.forEach((step) => {
+                    if (step.name === payload.name) {
+                        step.completed = true;
+                    }
+                })
+            },
+            isStepActive(payload) {
+                this.demoSteps.forEach((step) => {
+                    if (step.name === payload.name) {
+                        if(step.completed === true) {
+                            step.completed = false;
+                        }
                     }
                 })
             },
