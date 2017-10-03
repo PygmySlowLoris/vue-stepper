@@ -25,7 +25,8 @@
                     mode="out-in"
             >
                 <keep-alive>
-                    <component :is="steps[currentStep.index].component" :clickedNext="nextButton[currentStep.name]" @can-continue="proceed"></component>
+                    <component :is="steps[currentStep.index].component" :clickedNext="nextButton[currentStep.name]"
+                               @can-continue="proceed"></component>
                 </keep-alive>
             </transition>
         </div>
@@ -111,20 +112,20 @@
                 }
             },
             activateStep(index, back = false) {
-                if(this.steps[index]) {
+                if (this.steps[index]) {
                     this.previousStep = this.currentStep;
                     this.currentStep = {
                         name: this.steps[index].name,
                         index: index
                     };
 
-                    if(index + 1 === this.steps.length) {
+                    if (index + 1 === this.steps.length) {
                         this.finalStep = true;
                     } else {
                         this.finalStep = false;
                     }
 
-                    if(!back) {
+                    if (!back) {
                         this.$emit('completed-step', this.previousStep);
                     }
                 }
@@ -132,7 +133,7 @@
             },
             nextStep() {
                 if (this.canContinue) {
-                    if(this.finalStep) {
+                    if (this.finalStep) {
                         this.$emit('stepper-finished', this.currentStep);
                     }
                     let currentIndex = this.currentStep.index + 1;
@@ -156,7 +157,7 @@
         created() {
             // Initiate stepper
             this.activateStep(0);
-            this.steps.forEach( (step)=> {
+            this.steps.forEach((step) => {
                 this.nextButton[step.name] = false;
             });
         }
@@ -164,3 +165,28 @@
 </script>
 
 <style src="./HorizontalStepper.scss" scoped lang="scss"></style>
+<style scoped>
+    /* fallback */
+    @font-face {
+        font-family: 'Material Icons';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Material Icons'), local('MaterialIcons-Regular'), url(https://fonts.gstatic.com/s/materialicons/v17/2fcrYFNaTjcS6g4U3t-Y5ZjZjT5FdEJ140U2DJYC3mY.woff2) format('woff2');
+    }
+
+    .material-icons {
+        font-family: 'Material Icons';
+        font-weight: normal;
+        font-style: normal;
+        font-size: 24px;
+        line-height: 1;
+        letter-spacing: normal;
+        text-transform: none;
+        display: inline-block;
+        white-space: nowrap;
+        word-wrap: normal;
+        direction: ltr;
+        -webkit-font-feature-settings: 'liga';
+        -webkit-font-smoothing: antialiased;
+    }
+</style>
