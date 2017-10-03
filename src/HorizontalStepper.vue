@@ -33,7 +33,7 @@
         <div :class="['bottom', (currentStep.index > 0) ? '' : 'only-next']">
             <div v-if="currentStep.index > 0" class="stepper-button previous" @click="backStep()">
                 <i class="material-icons">keyboard_arrow_left</i>
-                <span>{{ back | translate(locale) }}</span>
+                <span>{{ 'back' | translate(locale) }}</span>
             </div>
             <div :class="['stepper-button next', !canContinue ? 'deactivated' : '']" @click="nextStep()">
                 <span>{{ (finalStep) ? 'finish' : 'next' | translate(locale) }}</span>
