@@ -32,10 +32,10 @@
         <div :class="['bottom', (currentStep.index > 0) ? '' : 'only-next']">
             <div v-if="currentStep.index > 0" class="stepper-button previous" @click="backStep()">
                 <i class="material-icons">keyboard_arrow_left</i>
-                <span>Atrás</span>
+                <span>{{ back | translate(locale) }}</span>
             </div>
             <div :class="['stepper-button next', !canContinue ? 'deactivated' : '']" @click="nextStep()">
-                <span>{{ (finalStep) ? 'Finalizar' : 'Siguiente' }}</span>
+                <span>{{ (finalStep) ? 'finish' : 'next' | translate(locale) }}</span>
                 <i class="material-icons">keyboard_arrow_right</i>
             </div>
         </div>
@@ -43,8 +43,19 @@
 </template>
 
 <script>
+    import translations from './Translations.js'
+
     export default {
+        filters: {
+            translate: function (value, locale) {
+                return translations[locale][value];
+            }
+        },
         props: {
+            locale: {
+                type: String,
+                default: 'en'
+            },
             steps: {
                 type: Array,
                 default: function () {
