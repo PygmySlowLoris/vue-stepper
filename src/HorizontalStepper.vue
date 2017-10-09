@@ -1,10 +1,14 @@
 <template>
     <div class="stepper-box">
         <div class="top">
-            <div class="divider-line"></div>
+            <div class="divider-line"
+                :style="{width: `${(100/(steps.length) * (steps.length - 1)) - 10}%`}"
+            ></div>
             <div class="steps-wrapper">
                 <template v-for="(step, index) in steps">
-                    <div :class="['step', isStepActive(index, step)]">
+                    <div :class="['step', isStepActive(index, step)]"
+                         :style="{width: `${100 / steps.length}%`}"
+                    >
                         <div class="circle">
                             <i class="material-icons md-18">
                                 {{ (step.completed) ? 'done' : step.icon }}

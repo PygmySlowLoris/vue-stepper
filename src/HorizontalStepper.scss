@@ -36,12 +36,11 @@
     display: flex;
     align-items: center;
     position: relative;
+    justify-content: center;
     .divider-line {
       border-bottom: 1px solid #cccccc;
       height: 2px;
-      width: 90%;
       position: absolute;
-      left: 5%;
       @include breakpoint(xs) {
         width: 90%;
       }
@@ -51,7 +50,7 @@
       align-items: center;
       justify-content: space-between;
       position: relative;
-      width: 100%;
+      width: 95%;
       left: 0;
       padding: 2% 4%;
       @include breakpoint(xs) {
@@ -59,13 +58,11 @@
         justify-content: center;
       }
       .step {
-        background-color: white;
         position: relative;
         display: flex;
         flex-direction: column;
         align-items: center;
         text-align: center;
-        padding: 0rem 1rem;
         &.deactivated {
           @include breakpoint(xs) {
             display: none;
@@ -78,6 +75,8 @@
         }
         .circle {
           margin-bottom: 1rem;
+          padding: 0 1rem;
+          background-color: white;
           i {
             background-color: #3383c8;
             color: #fff;
@@ -88,7 +87,7 @@
         .step-title {
           position: absolute;
           top: 90%;
-          width: 10rem;
+          width: 100%;
           h1, h2, h3, h4, h5 {
             margin: 0 0 .2rem 0;
             color: #333333;
