@@ -41,7 +41,7 @@
             <div class="container">
                 <div class="columns">
                     <div class="column is-8 is-offset-2">
-                        <horizontal-stepper :steps="demoSteps" @completed-step="completeStep"
+                        <horizontal-stepper :steps="demoSteps" @completed-step="completeStep" :top-buttons="true"
                                             @active-step="isStepActive" @stepper-finished="alert"></horizontal-stepper>
                     </div>
                 </div>
