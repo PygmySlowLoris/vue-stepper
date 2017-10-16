@@ -36,10 +36,14 @@
                     :leave-active-class="leaveAnimation"
                     mode="out-in"
             >
-                <keep-alive>
+                <!--If keep alive-->
+                <keep-alive v-if="keepAlive">
                     <component :is="steps[currentStep.index].component" :clickedNext="nextButton[currentStep.name]"
                                @can-continue="proceed"></component>
                 </keep-alive>
+                <!--If not show component and destroy it in each step change-->
+                <component :is="steps[currentStep.index].component" :clickedNext="nextButton[currentStep.name]"
+                           @can-continue="proceed" v-else></component>
             </transition>
         </div>
         <div :class="['bottom', (currentStep.index > 0) ? '' : 'only-next']">
@@ -92,6 +96,10 @@
                         }
                     ]
                 }
+            },
+            keepAlive: {
+                type: Boolean,
+                default: true
             }
         },
         data() {

@@ -23,6 +23,7 @@ npm install vue-stepper --save
 |  `steps`           | Array of Objects  | Each object is a step that will be included in the stepper |
 |  `locale`           | String  | Default: `en`. Current options: `en`, `es`. |
 |  `top-buttons`           | Boolean  | Default: `false`. If `true` buttons on the header, at the start and the end of the steps, will be shown for better user experience. |
+|  `keep-alive`           | Boolean  | Default: `true`. If `true` step components won't be destroy in each step change, bue if `false` they will. |
 
 
 ### Steps object properties

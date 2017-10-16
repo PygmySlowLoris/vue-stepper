@@ -1,6 +1,6 @@
 {
   "name": "vue-stepper",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Vue Stepper",
   "main": "src/index.js",
   "repository": {
