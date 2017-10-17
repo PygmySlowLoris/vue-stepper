@@ -27,5 +27,9 @@
 </template>
 
 <script>
-    export default {}
+    export default {
+        mounted() {
+            this.$emit('can-continue', {value: true})
+        }
+    }
 </script>

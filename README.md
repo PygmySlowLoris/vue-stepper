@@ -51,7 +51,7 @@ npm install vue-stepper --save
 
 | Event name            | When      |
 | :---------------      | :-------  |
-|  `can-continue`           | By default the *next button* will be disabled until the event `can-continue` is triggered with an object containing the property `value`. `Value` accepts a boolean, if `true` next/finish button will be enabled if false disabled.|
+|  `can-continue`           | By default the *next button* will be disabled until the event `can-continue` is triggered with an object containing the property `value`. `Value` accepts a boolean, if `true` next/finish button will be enabled if false disabled. On each next step `canContinue` variable will be set to false.|
 
 ##  Examples
 

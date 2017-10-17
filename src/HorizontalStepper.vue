@@ -165,6 +165,7 @@
 
                 }
                 this.nextButton[this.currentStep.name] = true;
+                this.canContinue = false;
                 this.$forceUpdate();
             },
             backStep() {
