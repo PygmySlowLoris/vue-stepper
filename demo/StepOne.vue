@@ -29,7 +29,7 @@
     import {required, email} from 'vuelidate/lib/validators'
 
     export default {
-        props: ['clickedNext'],
+        props: ['clickedNext', 'currentStep'],
         mixins: [validationMixin],
         data() {
             return {

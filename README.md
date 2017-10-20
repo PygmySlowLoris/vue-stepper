@@ -37,7 +37,6 @@ npm install vue-stepper --save
 |  `component`           | Component    | Imported component that will be show on the content area of the step. |
 |  `completed`           | Boolean    | If step is completed or not. If `TRUE` a `done` material icon will replace the one given before. Only mark as completed when you want to let know the user that the previous step has been completed |
 
-
 ## Events emitted by stepper
 
 | Event name            | When      |
@@ -52,6 +51,11 @@ npm install vue-stepper --save
 | Event name            | When      |
 | :---------------      | :-------  |
 |  `can-continue`           | By default the *next button* will be disabled until the event `can-continue` is triggered with an object containing the property `value`. `Value` accepts a boolean, if `true` next/finish button will be enabled if false disabled. On each next step `canContinue` variable will be set to false.|
+
+## Exposed props for step component
+| Properties            | Type      | Values     |
+| :---------------      | :-------  | :--------- |
+|  `currentStep`       | Object  | Exposes current step for step component |
 
 ##  Examples
 
@@ -179,7 +183,7 @@ Example of component content that will be displayed on the first step (*vuelidat
     import {required, email} from 'vuelidate/lib/validators'
 
     export default {
-        props: ['clickedNext'],
+        props: ['clickedNext', 'currentStep'],
         mixins: [validationMixin],
         data() {
             return {

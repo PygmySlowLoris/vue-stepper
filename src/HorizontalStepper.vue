@@ -39,11 +39,11 @@
                 <!--If keep alive-->
                 <keep-alive v-if="keepAlive">
                     <component :is="steps[currentStep.index].component" :clickedNext="nextButton[currentStep.name]"
-                               @can-continue="proceed"></component>
+                               @can-continue="proceed" :current-step="currentStep"></component>
                 </keep-alive>
                 <!--If not show component and destroy it in each step change-->
-                <component :is="steps[currentStep.index].component" :clickedNext="nextButton[currentStep.name]"
-                           @can-continue="proceed" v-else></component>
+                <component v-else :is="steps[currentStep.index].component" :clickedNext="nextButton[currentStep.name]"
+                           @can-continue="proceed" :current-step="currentStep"></component>
             </transition>
         </div>
         <div :class="['bottom', (currentStep.index > 0) ? '' : 'only-next']">
