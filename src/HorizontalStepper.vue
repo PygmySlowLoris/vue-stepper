@@ -39,11 +39,11 @@
                 <!--If keep alive-->
                 <keep-alive v-if="keepAlive">
                     <component :is="steps[currentStep.index].component" :clickedNext="nextButton[currentStep.name]"
-                               @can-continue="proceed" :current-step="currentStep"></component>
+                               @can-continue="proceed" @change-next="changeNextBtnValue" :current-step="currentStep"></component>
                 </keep-alive>
                 <!--If not show component and destroy it in each step change-->
                 <component v-else :is="steps[currentStep.index].component" :clickedNext="nextButton[currentStep.name]"
-                           @can-continue="proceed" :current-step="currentStep"></component>
+                           @can-continue="proceed"  @change-next="changeNextBtnValue" :current-step="currentStep"></component>
             </transition>
         </div>
         <div :class="['bottom', (currentStep.index > 0) ? '' : 'only-next']">
@@ -68,6 +68,7 @@
                 return translations[locale][value];
             }
         },
+
         props: {
             locale: {
                 type: String,
@@ -102,6 +103,7 @@
                 default: true
             }
         },
+
         data() {
             return {
                 currentStep: {},
@@ -111,6 +113,7 @@
                 finalStep: false
             }
         },
+
         computed: {
             enterAnimation() {
                 if (this.currentStep.index < this.previousStep.index) {
@@ -127,6 +130,7 @@
                 }
             }
         },
+
         methods: {
             isStepActive(index, step) {
                 if (this.currentStep.index === index) {
@@ -135,6 +139,7 @@
                     return 'deactivated'
                 }
             },
+
             activateStep(index, back = false) {
                 if (this.steps[index]) {
                     this.previousStep = this.currentStep;
@@ -155,6 +160,7 @@
                 }
                 this.$emit('active-step', this.currentStep);
             },
+
             nextStep() {
                 if (this.canContinue) {
                     if (this.finalStep) {
@@ -168,6 +174,7 @@
                 this.canContinue = false;
                 this.$forceUpdate();
             },
+
             backStep() {
                 this.$emit('clicking-back');
                 let currentIndex = this.currentStep.index - 1;
@@ -175,10 +182,17 @@
                     this.activateStep(currentIndex, true);
                 }
             },
+
             proceed(payload) {
                 this.canContinue = payload.value;
+            },
+
+            changeNextBtnValue(payload) {
+                this.nextButton[this.currentStep.name] = payload.nextBtnValue;
+                this.$forceUpdate();
             }
         },
+
         created() {
             // Initiate stepper
             this.activateStep(0);

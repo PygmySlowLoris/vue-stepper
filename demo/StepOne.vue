@@ -61,11 +61,16 @@
                         this.$emit('can-continue', {value: true});
                     } else {
                         this.$emit('can-continue', {value: false});
+                        setTimeout(()=> {
+                            this.$emit('change-next', {nextBtnValue: false});
+                        }, 3000)
                     }
                 },
                 deep: true
             },
+
             clickedNext(val) {
+                console.log(val);
                 if(val === true) {
                     this.$v.form.$touch();
                 }

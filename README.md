@@ -51,6 +51,7 @@ npm install vue-stepper --save
 | Event name            | When      |
 | :---------------      | :-------  |
 |  `can-continue`           | By default the *next button* will be disabled until the event `can-continue` is triggered with an object containing the property `value`. `Value` accepts a boolean, if `true` next/finish button will be enabled if false disabled. On each next step `canContinue` variable will be set to false.|
+|  `change-next`           | With this event you can change de state of the `clickedNext` prop that each step has. Just emit it with the following payload `{nextBtnValue: boolean}` |
 
 ## Exposed props for step component
 | Properties            | Type      | Values     |
