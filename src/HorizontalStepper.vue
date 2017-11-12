@@ -162,15 +162,15 @@
             },
 
             nextStep() {
+                this.nextButton[this.currentStep.name] = true;
                 if (this.canContinue) {
                     if (this.finalStep) {
                         this.$emit('stepper-finished', this.currentStep);
                     }
                     let currentIndex = this.currentStep.index + 1;
-                    this.activateStep(currentIndex);
 
+                    this.activateStep(currentIndex);
                 }
-                this.nextButton[this.currentStep.name] = true;
                 this.canContinue = false;
                 this.$forceUpdate();
             },
