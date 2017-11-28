@@ -8,5 +8,10 @@ export default {
         next: 'Siguiente',
         back: 'Atrás',
         finish: 'Finalizar'
+    },
+    pt: {
+        next: 'Próximo',
+        back: 'Voltar',
+        finish: 'Finalizar'
     }
 }
