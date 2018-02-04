@@ -30,22 +30,47 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build",
+    "test": "jest"
   },
   "dependencies": {
     "vue": "^2.2.1"
   },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "vue"
+    ],
+    "transform": {
+      "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
+      ".*\\.(vue)$": "<rootDir>/node_modules/vue-jest"
+    },
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/src/$1"
+    },
+    "snapshotSerializers": [
+      "<rootDir>/node_modules/jest-serializer-vue"
+    ],
+    "mapCoverage": true
+  },
   "devDependencies": {
+    "@vue/test-utils": "^1.0.0-beta.11",
     "babel-core": "^6.0.0",
+    "babel-jest": "^22.1.0",
     "babel-loader": "^6.0.0",
+    "babel-preset-env": "^1.6.1",
     "babel-preset-latest": "^6.0.0",
     "cross-env": "^3.0.0",
     "css-loader": "^0.25.0",
     "file-loader": "^0.9.0",
+    "jest": "^22.1.4",
+    "jest-serializer-vue": "^0.3.0",
     "node-sass": "^4.5.3",
     "sass-loader": "^6.0.6",
     "url-loader": "^0.5.8",
     "vue-color": "^2.0.9",
+    "vue-jest": "^2.0.0",
     "vue-loader": "^11.1.4",
     "vue-template-compiler": "^2.2.1",
     "vuelidate": "^0.5.0",
