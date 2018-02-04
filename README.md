@@ -1,4 +1,4 @@
-#   Stepper
+#   Stepper [![Build Status](https://travis-ci.org/PygmySlowLoris/vue-stepper.svg?branch=master)](https://travis-ci.org/PygmySlowLoris/vue-stepper)
 
 <p align="center">
 <img src="https://media.giphy.com/media/26Fff0ZKP893tSJ5m/giphy.gif" />
