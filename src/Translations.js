@@ -13,5 +13,10 @@ export default {
         next: 'Próximo',
         back: 'Voltar',
         finish: 'Finalizar'
+    },
+    ja: {
+        next: '次へ',
+        back: '戻る',
+        finish: '完了'
     }
 }
