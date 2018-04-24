@@ -18,5 +18,10 @@ export default {
         next: '次へ',
         back: '戻る',
         finish: '完了'
+    },
+    he: {
+        next: 'הבא',
+        back: 'חזרה',
+        finish: 'סיום'
     }
 }
