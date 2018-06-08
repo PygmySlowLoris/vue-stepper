@@ -23,5 +23,10 @@ export default {
         next: 'הבא',
         back: 'חזרה',
         finish: 'סיום'
+    },
+    cn: {
+        next: '下一步',
+        back: '返回',
+        finish: '完成'
     }
 }
