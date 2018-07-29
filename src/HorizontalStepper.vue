@@ -150,7 +150,7 @@ export default {
       this.$emit("active-step", this.currentStep);
     },
 
-    nextStep() {
+    nextStepAction() {
       this.nextButton[this.currentStep.name] = true;
       if (this.canContinue) {
         if (this.finalStep) {
@@ -164,6 +164,21 @@ export default {
       this.$forceUpdate();
     },
 
+    nextStep () {
+
+      if (!this.$listeners || !this.$listeners['before-next-step']) {
+        this.nextStepAction()
+      }
+
+      this.canContinue = false;
+
+      this.$emit("before-next-step", { currentStep: this.currentStep }, (next = true) => {
+        this.canContinue = true;
+        if (next) {
+          this.nextStepAction()
+        }
+      });
+    },
     backStep() {
       this.$emit("clicking-back");
       let currentIndex = this.currentStep.index - 1;
