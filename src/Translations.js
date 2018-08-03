@@ -28,5 +28,10 @@ export default {
         next: '下一步',
         back: '返回',
         finish: '完成'
+    },
+    ru: {
+        next: 'Вперед',
+        back: 'Назад',
+        finish: 'Готово'
     }
 }
