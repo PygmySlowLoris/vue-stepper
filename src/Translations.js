@@ -33,5 +33,10 @@ export default {
         next: 'Вперед',
         back: 'Назад',
         finish: 'Готово'
+    },
+    ar: {
+        next: 'التالي',
+        back: 'السابق',
+        finish: 'انهاء'
     }
 }
