@@ -29,7 +29,7 @@
         <div class="content">
             <transition :enter-active-class="enterAnimation" :leave-active-class="leaveAnimation" mode="out-in">
                 <!--If keep alive-->
-                <keep-alive v-if="keepAlive">
+                <keep-alive v-if="keepAliveData">
                     <component :is="steps[currentStep.index].component" :clickedNext="nextButton[currentStep.name]" @can-continue="proceed" @change-next="changeNextBtnValue" :current-step="currentStep"></component>
                 </keep-alive>
                 <!--If not show component and destroy it in each step change-->
@@ -90,6 +90,10 @@ export default {
     keepAlive: {
       type: Boolean,
       default: true
+    },
+    reset: {
+      type: Boolean,
+      default: false
     }
   },
 
@@ -99,7 +103,8 @@ export default {
       previousStep: {},
       nextButton: {},
       canContinue: false,
-      finalStep: false
+      finalStep: false,
+      keepAliveData: this.keepAlive
     };
   },
 
@@ -194,15 +199,38 @@ export default {
     changeNextBtnValue(payload) {
       this.nextButton[this.currentStep.name] = payload.nextBtnValue;
       this.$forceUpdate();
+    },
+
+    init() {
+      // Initiate stepper
+      this.activateStep(0);
+      this.steps.forEach(step => {
+        this.nextButton[step.name] = false;
+      });
+    }
+  },
+
+  watch: {
+    reset(val) {
+      if(!val) {
+        return;
+      }
+
+      this.keepAliveData = false;
+
+      this.init();
+      this.previousStep = {};
+
+      this.$nextTick(() => {
+        this.keepAliveData = this.keepAlive;
+        this.$emit('reset', true);
+      });
+
     }
   },
 
   created() {
-    // Initiate stepper
-    this.activateStep(0);
-    this.steps.forEach(step => {
-      this.nextButton[step.name] = false;
-    });
+    this.init();
   }
 };
 </script>
