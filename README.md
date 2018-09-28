@@ -24,6 +24,7 @@ npm install vue-stepper --save
 |  `locale`           | String  | Default: `en`. Current options: `en`, `es`, `pt`, `ja`, `he`, `cn`, `ru` , `ar`. |
 |  `top-buttons`           | Boolean  | Default: `false`. If `true` buttons on the header, at the start and the end of the steps, will be shown for better user experience. |
 |  `keep-alive`           | Boolean  | Default: `true`. If `true` step components won't be destroy in each step change, bue if `false` they will. |
+|  `reset`           | Boolean  | Default: `false`. If `true` the steps will be reset |
 
 
 ### Steps object properties
@@ -45,6 +46,7 @@ npm install vue-stepper --save
 |  `active-step`           | Current active step. It's `name` and `index` are exposed on the deployed payload.| 
 |  `stepper-finished`           | Event emitted when the user clicks the final button. Now it's time to execute a final callback method|
 |  `clicking-back`           | Triggered when user clicks the back button to return to a previous step|
+|  `reset`           | Triggered when the steps have been reset. So now it's pointing to the first step with cleared fields|
 
 ## Events that can be emitted by content component
 
