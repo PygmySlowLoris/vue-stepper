@@ -38,5 +38,10 @@ export default {
         next: 'التالي',
         back: 'السابق',
         finish: 'انهاء'
+    },
+    nl: {
+        next: 'Volgende',
+        back: 'Vorige',
+        finish: 'Klaar'
     }
 }
