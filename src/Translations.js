@@ -43,5 +43,10 @@ export default {
         next: 'Volgende',
         back: 'Vorige',
         finish: 'Klaar'
+    },
+    se: {
+        next: 'Nästa',
+        back: 'Tillbaka',
+        finish: 'Skicka'
     }
 }
